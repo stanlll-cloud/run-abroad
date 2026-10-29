@@ -163,6 +163,7 @@ run-abroad/
 ├── nomad.html          数字游民专题（月收入门槛横向对比）
 ├── hk.html             香港工作签证专题（高才通 / IANG / 专才决策树）
 ├── student.html        大学生专题（14 条在读与应届低成本路径）
+├── wild.html           野路子专题（无情道 / 扎根居留等边缘风险深度拆解）
 ├── pathway.html        全球路径深度详情页
 ├── student-pathway.html 大学生路径深度指南与分阶段攻略
 ├── css/

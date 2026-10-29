@@ -448,6 +448,9 @@ body {
     font-size: 12px;
     border-radius: var(--r-sm);
   }
+  .hero-alt a:nth-child(5):last-child {
+    grid-column: span 2;
+  }
 }
 
 main { padding: var(--s7) 0 var(--s9); }
@@ -1608,3 +1611,224 @@ footer a:hover {
   }
   .card:hover, .primary:active { transform: none; }
 }
+
+/* ============================================================
+   野路子专题 (Wild / Risk Paths)
+   ============================================================ */
+
+.wild-hero {
+  background:
+    radial-gradient(ellipse 700px 320px at 50% -20px, rgba(164, 74, 63, 0.12), transparent 72%),
+    radial-gradient(ellipse 900px 450px at 50% 10%, rgba(243, 239, 230, 0.55), transparent 80%),
+    var(--bg);
+}
+
+.wild-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: var(--s4);
+  padding: 5px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #BA3E34;
+  background: #FDF1F0;
+  border: 1px solid #F5C6C2;
+  border-radius: var(--r-full);
+  box-shadow: var(--shadow-xs);
+}
+@media (prefers-color-scheme: dark) {
+  .wild-badge {
+    color: #F87171;
+    background: #2D1515;
+    border-color: #592525;
+  }
+}
+
+.wild-cards {
+  display: grid;
+  gap: var(--s6);
+  margin-bottom: var(--s8);
+}
+
+.wild-card {
+  position: relative;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  padding: var(--s7);
+  box-shadow: var(--shadow-sm);
+  transition: all .2s ease;
+}
+.wild-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--accent-border);
+}
+.wild-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: var(--s7); right: var(--s7);
+  height: 3px;
+  background: #BA3E34;
+  border-radius: 0 0 3px 3px;
+}
+
+.wild-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--s4);
+  flex-wrap: wrap;
+  margin-bottom: var(--s4);
+}
+
+.wild-title-area {
+  display: flex;
+  gap: var(--s4);
+  align-items: baseline;
+}
+.wild-title-area h2 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.wild-alias {
+  font-size: 12px;
+  color: var(--faint);
+  margin-top: 4px;
+}
+
+.wild-risk-tag {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: var(--r-full);
+  white-space: nowrap;
+}
+.wild-risk-tag.extreme {
+  color: #BA3E34;
+  background: #FDF1F0;
+  border: 1px solid #F5C6C2;
+}
+.wild-risk-tag.high {
+  color: #B5791E;
+  background: #FDF7EC;
+  border: 1px solid #F7E4BE;
+}
+@media (prefers-color-scheme: dark) {
+  .wild-risk-tag.extreme { color: #F87171; background: #2D1515; border-color: #592525; }
+  .wild-risk-tag.high { color: #E0A946; background: #281F10; border-color: #423214; }
+}
+
+.wild-compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s4);
+  margin: var(--s5) 0;
+}
+@media (max-width: 680px) {
+  .wild-compare-grid { grid-template-columns: 1fr; }
+}
+
+.wild-box {
+  padding: var(--s4) var(--s5);
+  border-radius: var(--r-md);
+  font-size: 13.5px;
+  line-height: 1.7;
+}
+.wild-box.myth {
+  background: var(--bg-tint);
+  border: 1px solid var(--line);
+  color: var(--ink-soft);
+}
+.wild-box.myth strong { color: var(--ink); }
+.wild-box.reality {
+  background: #FFF8F7;
+  border: 1px solid #FAD7D4;
+  color: #5C2320;
+}
+@media (prefers-color-scheme: dark) {
+  .wild-box.reality {
+    background: #241413;
+    border-color: #472120;
+    color: #E6BCBA;
+  }
+}
+.wild-box.reality strong { color: #BA3E34; }
+@media (prefers-color-scheme: dark) {
+  .wild-box.reality strong { color: #F87171; }
+}
+
+.wild-box-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  margin-bottom: var(--s2);
+  display: block;
+}
+.wild-box.myth .wild-box-label { color: var(--muted); }
+.wild-box.reality .wild-box-label { color: #BA3E34; }
+@media (prefers-color-scheme: dark) {
+  .wild-box.reality .wild-box-label { color: #F87171; }
+}
+
+.wild-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--s3);
+  padding: var(--s3) 0;
+  margin-top: var(--s4);
+  border-top: 1px solid var(--hair);
+  border-bottom: 1px solid var(--hair);
+  font-size: 12.5px;
+}
+@media (max-width: 600px) {
+  .wild-metrics { grid-template-columns: 1fr; gap: var(--s2); }
+}
+.wild-metric-item span { color: var(--faint); font-size: 11px; display: block; margin-bottom: 2px; }
+.wild-metric-item b { color: var(--ink); font-weight: 600; }
+
+.wild-pitfalls {
+  margin-top: var(--s5);
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--ink-soft);
+}
+.wild-pitfalls h3 {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 var(--s2);
+}
+.wild-pitfalls ul {
+  margin: 0;
+  padding-left: var(--s5);
+}
+.wild-pitfalls li {
+  margin-bottom: var(--s2);
+}
+.wild-pitfalls li::marker {
+  color: #BA3E34;
+}
+.wild-pitfalls li strong {
+  color: var(--ink);
+}
+
+.wild-law-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: var(--s4);
+  padding: 3px 10px;
+  font-size: 11.5px;
+  color: var(--muted);
+  background: var(--panel-warm);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+}
+
