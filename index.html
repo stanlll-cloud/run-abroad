@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>润学导航 · 我能怎么出国？</title>
+<meta name="description" content="填写年龄、学历、语言、技能，一次性看清自己能走哪些出国路径，以及还差什么。纯静态、开源、不收集任何数据。">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<aside class="claude-topbar">
+  <div class="wrap claude-topbar-inner">
+    <a href="index.html" class="claude-brand">
+      <svg class="claude-spark" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+        <path d="M12 2C12.5523 2 13 2.44772 13 3V9.58579L17.6569 4.92893C18.0474 4.53841 18.6805 4.53841 19.0711 4.92893C19.4616 5.31946 19.4616 5.95262 19.0711 6.34315L14.4142 11H21C21.5523 11 22 11.4477 22 12C22 12.5523 21.5523 13 21 13H14.4142L19.0711 17.6569C19.4616 18.0474 19.4616 18.6805 19.0711 19.0711C18.6805 19.4616 18.0474 19.4616 17.6569 19.0711L13 14.4142V21C13 21.5523 12.5523 22 12 22C11.4477 22 11 21.5523 11 21V14.4142L6.34315 19.0711C5.95262 19.4616 5.31946 19.4616 4.92893 19.0711C4.53841 18.6805 4.53841 18.0474 4.92893 17.6569L9.58579 13H3C2.44772 13 2 12.5523 2 12C2 11.4477 2 11 3 11H9.58579L4.92893 6.34315C4.53841 5.95262 4.53841 5.31946 4.92893 4.92893C5.31946 4.53841 5.95262 4.53841 6.34315 4.92893L11 9.58579V3C11 2.44772 11.4477 2 12 2Z"/>
+      </svg>
+      <span class="claude-brand-title">润学导航</span>
+      <span class="claude-badge-pill">Claude Edition</span>
+    </a>
+    <div class="claude-top-actions">
+      <a href="https://github.com/stanlll-cloud/run-abroad" target="_blank" rel="noopener noreferrer" class="claude-gh-btn">
+        <svg viewBox="0 0 16 16" fill="currentColor">
+          <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+        </svg>
+        <span>GitHub 源码</span>
+      </a>
+    </div>
+  </div>
+</aside>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-pill-badge">✳ 全球 72+ 条签证与移民通道 · 智能多维匹配</div>
+    <h1>我能怎么润？</h1>
+    <p class="lead">
+      填写少量基本信息，从 <b id="total">0</b> 条签证 / 移民路径里筛出适合你的，
+      并告诉你<strong>还差什么</strong>。
+    </p>
+    <p class="privacy">全部计算在你的浏览器里完成 · 不上传、不存储、无后端</p>
+    <nav class="hero-alt" aria-label="快速前往专题">
+      <a class="current" href="index.html" aria-current="page"><span>全球路径</span><small>72 条路径</small></a>
+      <a href="nomad.html"><span>数字游民</span><small>收入门槛</small></a>
+      <a href="hk.html"><span>香港签证</span><small>高才通 · IANG · 专才</small></a>
+      <a href="student.html"><span>大学生专题</span><small>14 条学生路径</small></a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <form id="form" class="panel">
+    <div class="grid">
+      <label class="field">
+        <span>年龄</span>
+        <input type="number" id="age" min="15" max="80" placeholder="例如 26" required>
+      </label>
+
+      <label class="field">
+        <span>最高学历</span>
+        <select id="degree" required></select>
+      </label>
+
+      <label class="field">
+        <span>院校层次</span>
+        <select id="uniRank" required></select>
+        <small>最高学历所在院校。很多签证只认世界排名前 50 / 100 / 200 的学校</small>
+      </label>
+
+      <label class="field" id="ugRankField" hidden>
+        <span>本科院校层次</span>
+        <select id="ugRank"></select>
+        <small>香港高才通 B / C 类只看本科院校，硕博院校不算</small>
+      </label>
+
+      <label class="field">
+        <span>学位在哪读的</span>
+        <select id="studyLoc" required></select>
+        <small>香港 IANG、英国 PSW 等只认当地院校的学位</small>
+      </label>
+
+      <label class="field">
+        <span>毕业多久了</span>
+        <select id="gradYears" required></select>
+        <small>找工作签普遍有毕业 3–5 年的窗口期</small>
+      </label>
+
+      <label class="field">
+        <span>英语水平</span>
+        <select id="english" required></select>
+      </label>
+
+      <label class="field">
+        <span>法语水平</span>
+        <select id="french" required></select>
+        <small>不会也没关系。加拿大法语通道分数线远低于常规轮次</small>
+      </label>
+
+      <label class="field">
+        <span>全职工作经验</span>
+        <select id="workExp" required></select>
+      </label>
+
+      <label class="field">
+        <span>可动用资金</span>
+        <select id="funds" required></select>
+        <small>用于资金证明 / 封锁账户 / 申请费</small>
+      </label>
+
+      <label class="field">
+        <span>主要持续收入类型</span>
+        <select id="incomeType" required></select>
+        <small>只用于初步区分主动、被动收入与可动用存款</small>
+      </label>
+
+      <label class="field" id="remoteAbroadField" hidden>
+        <span>当前工作能否长期在境外完成</span>
+        <select id="remoteAbroad" disabled></select>
+      </label>
+
+      <label class="field" id="activeIncomeField" hidden>
+        <span>可持续的主动月收入</span>
+        <select id="activeIncome" disabled></select>
+        <small>税前粗略档位即可</small>
+      </label>
+
+      <label class="field" id="primaryIncomeCountryField" hidden>
+        <span>主要收入来源国家 / 地区</span>
+        <select id="primaryIncomeCountry" disabled></select>
+        <small>按主要雇主或客户所在地选择</small>
+      </label>
+
+      <label class="field" id="passiveIncomeField" hidden>
+        <span>可持续的被动月收入</span>
+        <select id="passiveIncome" disabled></select>
+        <small>如房租、养老金、分红或利息</small>
+      </label>
+
+      <label class="field checkbox">
+        <input type="checkbox" id="hasOffer">
+        <span>已经有海外雇主的 offer</span>
+      </label>
+    </div>
+
+    <fieldset>
+      <legend>会哪些小语种<em>可多选，很多低门槛路径的开关就在这里</em></legend>
+      <div id="langs" class="chips"></div>
+    </fieldset>
+
+    <fieldset>
+      <legend>技能方向<em>可多选，影响技术移民和人才类签证的匹配</em></legend>
+      <div id="skills" class="chips"></div>
+    </fieldset>
+
+    <fieldset>
+      <legend>你的诉求<em>可多选，影响排序</em></legend>
+      <div id="goals" class="chips"></div>
+    </fieldset>
+
+    <fieldset>
+      <legend>想去哪<em>可多选，不选就是不限地区</em></legend>
+      <div id="regions" class="chips"></div>
+    </fieldset>
+
+    <fieldset>
+      <legend>我不想…<em>可多选，勾上就把这类路径筛掉</em></legend>
+      <div id="excludes" class="chips"></div>
+    </fieldset>
+
+    <button type="submit" class="primary">
+      <span>✦</span>
+      <span>开始推演我能走的路</span>
+    </button>
+  </form>
+
+  <div id="results" hidden>
+    <div id="summary" class="panel summary"></div>
+
+    <div class="filterbar">
+      <label class="switch">
+        <input type="checkbox" id="onlyDeveloped">
+        <span>只看发达国家 / 地区</span>
+      </label>
+      <span id="filterNote" class="filter-note"></span>
+      <button id="copyLink" class="ghost">复制结果链接</button>
+    </div>
+
+    <div id="groups"></div>
+  </div>
+
+  <section class="panel disclaimer">
+    <h2>请务必读一下</h2>
+    <ul>
+      <li><b>这是初筛工具，不是法律意见。</b>结果只说明「值得去查哪几条路」，不代表你一定能申请成功。</li>
+      <li><b>移民政策变得很快。</b>薪资门槛、名额、认可院校名单几乎每年都调整，每张卡片底部都有官网链接，最终以官网为准。</li>
+      <li><b>警惕中介。</b>本项目列出的绝大多数路径都可以自己 DIY 申请。任何声称「包过」「内部名额」的都要高度警惕。</li>
+      <li><b>数据可能有错。</b>欢迎在 GitHub 提 Issue 或 PR 纠正，见下方仓库链接。</li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>开源项目 · MIT License · 纯静态无后端 · 欢迎 PR 补充路径和纠错</p>
+    <p><a href="https://github.com/stanlll-cloud/run-abroad" target="_blank" rel="noopener noreferrer">GitHub 仓库 (stanlll-cloud/run-abroad)</a></p>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/engine.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
